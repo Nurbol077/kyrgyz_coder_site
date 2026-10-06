@@ -1,0 +1,424 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Жеке кабинет — Kyrgyz Coder
+{% endblock %}
+
+
+{% block content %}
+
+<section
+    class="section"
+    style="
+        min-height: 80vh;
+        background: #fafafa;
+    "
+>
+
+    <div class="container">
+
+        <!-- HEADER -->
+
+        <div class="mb-5">
+
+            <span
+                style="
+                    color: #E50914;
+                    font-weight: 700;
+                    font-size: 14px;
+                "
+            >
+                KYRGYZ CODER
+            </span>
+
+            <h1
+                class="fw-bold mt-2"
+                style="font-size: 40px;"
+            >
+                Жеке кабинет
+            </h1>
+
+            <p class="text-secondary">
+                Окууңузду ушул жерден башкарыңыз.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+
+            <!-- PROFILE CARD -->
+
+            <div class="col-lg-4">
+
+                <div
+                    class="card-custom p-4"
+                    style="background: white;"
+                >
+
+                    <div class="text-center">
+
+                        <!-- AVATAR -->
+
+                        <div
+                            style="
+                                width: 90px;
+                                height: 90px;
+                                background: #ffe5e5;
+                                color: #E50914;
+                                border-radius: 50%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                margin: 0 auto 20px;
+                                font-size: 36px;
+                                font-weight: 700;
+                            "
+                        >
+
+                            {% if user.first_name %}
+
+                                {{ user.first_name|first|upper }}
+
+                            {% else %}
+
+                                <i class="bi bi-person"></i>
+
+                            {% endif %}
+
+                        </div>
+
+
+                        <!-- NAME -->
+
+                        <h3 class="fw-bold mb-1">
+
+                            {% if user.first_name %}
+
+                                {{ user.first_name }}
+
+                            {% else %}
+
+                                Колдонуучу
+
+                            {% endif %}
+
+                        </h3>
+
+
+                        <!-- EMAIL -->
+
+                        <p class="text-secondary mb-4">
+
+                            {{ user.email }}
+
+                        </p>
+
+
+                        <hr>
+
+
+                        <!-- INFO -->
+
+                        <div class="text-start mt-4">
+
+                            <div class="d-flex mb-3">
+
+                                <i
+                                    class="bi bi-envelope me-3"
+                                    style="
+                                        color:#E50914;
+                                        font-size:20px;
+                                    "
+                                ></i>
+
+                                <div>
+
+                                    <small class="text-secondary">
+                                        Email
+                                    </small>
+
+                                    <div class="fw-semibold">
+                                        {{ user.email }}
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="d-flex">
+
+                                <i
+                                    class="bi bi-calendar3 me-3"
+                                    style="
+                                        color:#E50914;
+                                        font-size:20px;
+                                    "
+                                ></i>
+
+                                <div>
+
+                                    <small class="text-secondary">
+                                        Катталган күнү
+                                    </small>
+
+                                    <div class="fw-semibold">
+                                        {{ user.date_joined|date:"d.m.Y" }}
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- LOGOUT -->
+
+                        <a
+                            href="{% url 'logout' %}"
+                            class="btn btn-outline-danger w-100 mt-4 py-2"
+                        >
+
+                            <i class="bi bi-box-arrow-right me-2"></i>
+
+                            Аккаунттан чыгуу
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- MAIN -->
+
+            <div class="col-lg-8">
+
+
+                <!-- WELCOME -->
+
+                <div
+                    class="card-custom p-4 mb-4"
+                    style="
+                        background: linear-gradient(
+                            135deg,
+                            #E50914,
+                            #b90710
+                        );
+                        color: white;
+                        border: none;
+                    "
+                >
+
+                    <div class="row align-items-center">
+
+                        <div class="col-md-8">
+
+                            <h2 class="fw-bold">
+                                Кош келиңиз,
+                                {{ user.first_name|default:user.username }}! 👋
+                            </h2>
+
+                            <p class="mb-0" style="opacity: .9;">
+                                Kyrgyz Coder менен IT дүйнөсүнө
+                                кадамыңызды баштаңыз.
+                            </p>
+
+                        </div>
+
+
+                        <div
+                            class="col-md-4 text-md-end mt-3 mt-md-0"
+                        >
+
+                            <i
+                                class="bi bi-code-slash"
+                                style="
+                                    font-size: 70px;
+                                    opacity: .25;
+                                "
+                            ></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STATISTICS -->
+
+                <div class="row g-4 mb-4">
+
+
+                    <div class="col-md-4">
+
+                        <div
+                            class="card-custom p-4"
+                            style="background:white;"
+                        >
+
+                            <div class="icon-box mb-3">
+
+                                <i class="bi bi-book"></i>
+
+                            </div>
+
+                            <h3 class="fw-bold">
+                                0
+                            </h3>
+
+                            <p class="text-secondary mb-0">
+                                Менин курстарым
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div
+                            class="card-custom p-4"
+                            style="background:white;"
+                        >
+
+                            <div class="icon-box mb-3">
+
+                                <i class="bi bi-play-circle"></i>
+
+                            </div>
+
+                            <h3 class="fw-bold">
+                                0
+                            </h3>
+
+                            <p class="text-secondary mb-0">
+                                Өткөн сабактар
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div
+                            class="card-custom p-4"
+                            style="background:white;"
+                        >
+
+                            <div class="icon-box mb-3">
+
+                                <i class="bi bi-bar-chart"></i>
+
+                            </div>
+
+                            <h3 class="fw-bold">
+                                0%
+                            </h3>
+
+                            <p class="text-secondary mb-0">
+                                Жалпы прогресс
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- MY COURSES -->
+
+                <div
+                    class="card-custom p-4"
+                    style="background:white;"
+                >
+
+                    <div
+                        class="d-flex justify-content-between align-items-center mb-4"
+                    >
+
+                        <div>
+
+                            <h3 class="fw-bold mb-1">
+                                Менин курстарым
+                            </h3>
+
+                            <p class="text-secondary mb-0">
+                                Сиз окуп жаткан курстар
+                            </p>
+
+                        </div>
+
+
+                        <a
+                            href="{% url 'courses' %}"
+                            class="btn btn-red"
+                        >
+                            Курстарды көрүү
+                        </a>
+
+                    </div>
+
+
+                    <!-- EMPTY -->
+
+                    <div
+                        class="text-center py-5"
+                        style="
+                            border: 2px dashed #eeeeee;
+                            border-radius: 12px;
+                        "
+                    >
+
+                        <i
+                            class="bi bi-journal-bookmark"
+                            style="
+                                font-size: 50px;
+                                color: #E50914;
+                            "
+                        ></i>
+
+
+                        <h5 class="fw-bold mt-3">
+                            Азырынча курс жок
+                        </h5>
+
+
+                        <p class="text-secondary">
+                            Курстар бөлүмүнөн өзүңүзгө
+                            ылайыктуу курсту тандаңыз.
+                        </p>
+
+
+                        <a
+                            href="{% url 'courses' %}"
+                            class="btn btn-red mt-2"
+                        >
+                            Курстарды көрүү
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
+```

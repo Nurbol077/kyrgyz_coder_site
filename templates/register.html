@@ -1,0 +1,355 @@
+
+{% extends 'base.html' %}
+
+{% block title %}
+Катталуу — Kyrgyz Coder
+{% endblock %}
+
+
+{% block content %}
+
+<section
+    class="section"
+    style="
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        background: #fafafa;
+    "
+>
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-5 col-md-7">
+
+
+                <!-- REGISTER CARD -->
+
+                <div class="form-box">
+
+
+                    <!-- HEADER -->
+
+                    <div class="text-center mb-4">
+
+                        <div
+                            style="
+                                width: 65px;
+                                height: 65px;
+                                background: #ffe5e5;
+                                color: #E50914;
+                                border-radius: 50%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                margin: 0 auto 20px;
+                                font-size: 28px;
+                            "
+                        >
+                            <i class="bi bi-person-plus"></i>
+                        </div>
+
+
+                        <h2
+                            class="fw-bold mb-2"
+                        >
+                            Аккаунт түзүү
+                        </h2>
+
+
+                        <p class="text-secondary mb-0">
+                            Kyrgyz Coder'ге кошулуңуз
+                        </p>
+
+                    </div>
+
+
+                    <!-- FORM -->
+
+                    <form
+                        method="POST"
+                        action="{% url 'register' %}"
+                    >
+
+                        {% csrf_token %}
+
+
+                        <!-- NAME -->
+
+                        <div class="mb-3">
+
+                            <label
+                                for="name"
+                                class="form-label fw-semibold"
+                            >
+                                Аты-жөнүңүз
+                            </label>
+
+
+                            <div class="input-group">
+
+                                <span class="input-group-text bg-white">
+                                    <i class="bi bi-person"></i>
+                                </span>
+
+
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    class="form-control"
+                                    placeholder="Атыңызды жазыңыз"
+                                    autocomplete="name"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- EMAIL -->
+
+                        <div class="mb-3">
+
+                            <label
+                                for="email"
+                                class="form-label fw-semibold"
+                            >
+                                Email
+                            </label>
+
+
+                            <div class="input-group">
+
+                                <span class="input-group-text bg-white">
+                                    <i class="bi bi-envelope"></i>
+                                </span>
+
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    class="form-control"
+                                    placeholder="example@gmail.com"
+                                    autocomplete="email"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- PHONE -->
+
+                        <div class="mb-3">
+
+                            <label
+                                for="phone"
+                                class="form-label fw-semibold"
+                            >
+                                Телефон
+                            </label>
+
+
+                            <div class="input-group">
+
+                                <span class="input-group-text bg-white">
+                                    <i class="bi bi-telephone"></i>
+                                </span>
+
+
+                                <input
+                                    type="tel"
+                                    id="phone"
+                                    name="phone"
+                                    class="form-control"
+                                    placeholder="+996 700 00 00 00"
+                                    autocomplete="tel"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- PASSWORD -->
+
+                        <div class="mb-3">
+
+                            <label
+                                for="password"
+                                class="form-label fw-semibold"
+                            >
+                                Пароль
+                            </label>
+
+
+                            <div class="input-group">
+
+                                <span class="input-group-text bg-white">
+                                    <i class="bi bi-lock"></i>
+                                </span>
+
+
+                                <input
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    class="form-control"
+                                    placeholder="Кеминде 8 символ"
+                                    autocomplete="new-password"
+                                    required
+                                >
+
+
+                                <button
+                                    type="button"
+                                    class="btn btn-outline-secondary"
+                                    onclick="togglePassword('password', 'passwordIcon')"
+                                >
+                                    <i
+                                        id="passwordIcon"
+                                        class="bi bi-eye"
+                                    ></i>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- PASSWORD CONFIRM -->
+
+                        <div class="mb-4">
+
+                            <label
+                                for="password2"
+                                class="form-label fw-semibold"
+                            >
+                                Паролду кайталаңыз
+                            </label>
+
+
+                            <div class="input-group">
+
+                                <span class="input-group-text bg-white">
+                                    <i class="bi bi-shield-lock"></i>
+                                </span>
+
+
+                                <input
+                                    type="password"
+                                    id="password2"
+                                    name="password2"
+                                    class="form-control"
+                                    placeholder="Паролду кайра жазыңыз"
+                                    autocomplete="new-password"
+                                    required
+                                >
+
+
+                                <button
+                                    type="button"
+                                    class="btn btn-outline-secondary"
+                                    onclick="togglePassword('password2', 'passwordIcon2')"
+                                >
+                                    <i
+                                        id="passwordIcon2"
+                                        class="bi bi-eye"
+                                    ></i>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- SUBMIT -->
+
+                        <button
+                            type="submit"
+                            class="btn btn-red w-100 py-3"
+                        >
+
+                            <i class="bi bi-person-plus me-2"></i>
+
+                            Катталуу
+
+                        </button>
+
+                    </form>
+
+
+                    <!-- LOGIN -->
+
+                    <div class="text-center mt-4">
+
+                        <p class="text-secondary mb-0">
+
+                            Аккаунтуңуз барбы?
+
+                            <a
+                                href="{% url 'login' %}"
+                                style="
+                                    color: #E50914;
+                                    font-weight: 700;
+                                "
+                            >
+                                Кирүү
+                            </a>
+
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PASSWORD SCRIPT -->
+
+<script>
+
+function togglePassword(inputId, iconId) {
+
+    const input = document.getElementById(inputId);
+    const icon = document.getElementById(iconId);
+
+
+    if (input.type === "password") {
+
+        input.type = "text";
+
+        icon.classList.remove("bi-eye");
+
+        icon.classList.add("bi-eye-slash");
+
+    } else {
+
+        input.type = "password";
+
+        icon.classList.remove("bi-eye-slash");
+
+        icon.classList.add("bi-eye");
+
+    }
+
+}
+
+</script>
+
+{% endblock %}
+
